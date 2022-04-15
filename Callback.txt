@@ -1,5 +1,0 @@
-glfwSetWindowCloseCallback(m_window, [](GLFWwindow* glfwwindow)
-{
-	std::cout << "I am attempting to close the window" << std::endl;
-	window* data = reinterpret_cast<window*>(glfwGetWindowUserPointer(glfwwindow))
-});

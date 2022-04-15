@@ -2,48 +2,81 @@ module;
 
 #include <iostream>
 #include <string>
-#include "GLFW/glfw3.h"
 #include <windows.h>
+
+#include "GLFW/glfw3.h"
 
 export module Window;
 
-import ImGuiLayer;
+import OpenGLFramebuffers;
 
-struct WindowData
-{
-    bool m_running = true;
-    std::string title = "Segy - C++20";
-    uint16_t width = 1200;
-    uint16_t height = 600;
-};
-
-export struct window 
+export struct gl_window
 {
     GLFWwindow* m_window;
-    WindowData m_data;
+    bool m_running = true;
 
-    window()
+    std::string title = "Segy - C++20";
+    int m_width = 1200;
+    int m_height = 650;
+
+    std::unique_ptr<opengl_framebuffer> m_framebuffer;
+
+    gl_window()
     {
         if (!glfwInit())
-            std::cerr << "Could not intialize GLFW!";
+        {
+            std::cout << "Could not intialize GLFW!\n";
+            m_running = false;
+        }
 
-        m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title.c_str(), NULL, NULL);
+        m_window = glfwCreateWindow(m_width, m_height, title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_window);
 
         if (!m_window)
         {
-            glfwTerminate();
-            std::cerr << "Could not intialize a window!";
+            std::cout << "Could not intialize a window!\n";
+            m_running = false;
         }
+
+        glfwSetWindowUserPointer(m_window, this);
 
         glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
         {
-            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            gl_window& window_app = *(gl_window*)glfwGetWindowUserPointer(window);
             int message = MessageBox(NULL, L"Are you sure to close the program?", L"Close window!", MB_OKCANCEL | MB_ICONQUESTION);
             if (message == IDOK)
-                data.m_running = true;
+                window_app.m_running = false;
         });
+
+        glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+        {
+            gl_window& window_app = *(gl_window*)glfwGetWindowUserPointer(window);
+            window_app.m_width = width;
+            window_app.m_height = height;
+            window_app.m_framebuffer->create_buffers(width, height);
+        });
+
+        glEnable(GL_DEPTH_TEST);
+
+        m_framebuffer = std::make_unique<opengl_framebuffer>();
     }
 
-    ~window() {}
+    ~gl_window()
+    {
+        glfwDestroyWindow(m_window);
+        glfwTerminate();
+    }
+
+    void pre_render()
+    {
+        glViewport(0, 0, m_width, m_height);
+        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    void post_render()
+    {
+        glfwPollEvents();
+        glfwSwapBuffers(m_window);
+    }
 };

@@ -7,16 +7,37 @@
     <Filter Include="Editor">
       <UniqueIdentifier>{48d35dbf-d4e2-4fcb-8210-3e707404b9cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{df0fc798-8a8f-4327-ac77-20b09a0a0a69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\ImGuiLayer.cpp">
+    <ClCompile Include="Core\imgui_context.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Window.cpp">
+    <ClCompile Include="Core\window.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Editor\EditorLayer.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
+    <ClCompile Include="Core\opengl_vertex_buffer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\opengl_framebuffer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="application.cpp" />
+    <ClCompile Include="Shaders\shader_utils.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\fs.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\vs.shader">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
