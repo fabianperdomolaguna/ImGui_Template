@@ -8,11 +8,19 @@ export module OpenGLFramebuffers;
 
 export struct opengl_framebuffer
 {
-	uint32_t FBO;
-	uint32_t RBO;
-	uint32_t render_texture;
+	uint32_t FBO = 0;
+	uint32_t RBO = 0;
+	uint32_t render_texture = 0;
 	int32_t m_width;
 	int32_t m_height;
+
+	opengl_framebuffer(int32_t width, int32_t height) 
+	{ 
+		gladLoadGL();
+		create_buffers(width, height);
+	}
+
+	~opengl_framebuffer() { delete_buffers(); }
 
 	void create_buffers(int32_t width, int32_t height)
 	{

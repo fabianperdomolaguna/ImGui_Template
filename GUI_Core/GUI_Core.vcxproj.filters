@@ -7,8 +7,14 @@
     <Filter Include="Editor">
       <UniqueIdentifier>{48d35dbf-d4e2-4fcb-8210-3e707404b9cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders">
+    <Filter Include="Shader">
       <UniqueIdentifier>{df0fc798-8a8f-4327-ac77-20b09a0a0a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{5eb76d6e-e4d3-4fc0-9f3f-73f421eef226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders_Files">
+      <UniqueIdentifier>{9ff4dcab-88bd-481d-aea7-a333d7496ac6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -21,23 +27,23 @@
     <ClCompile Include="Editor\EditorLayer.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
-    <ClCompile Include="Core\opengl_vertex_buffer.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\opengl_framebuffer.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="application.cpp" />
-    <ClCompile Include="Shaders\shader_utils.cpp">
-      <Filter>Shaders</Filter>
+    <ClCompile Include="Shader\shader_utils.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\opengl_framebuffer.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\opengl_vertex.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\fs.shader">
-      <Filter>Shaders</Filter>
+    <None Include="Shaders_Files\fs.shader">
+      <Filter>Shaders_Files</Filter>
     </None>
-    <None Include="Shaders\vs.shader">
-      <Filter>Shaders</Filter>
+    <None Include="Shaders_Files\vs.shader">
+      <Filter>Shaders_Files</Filter>
     </None>
   </ItemGroup>
 </Project>

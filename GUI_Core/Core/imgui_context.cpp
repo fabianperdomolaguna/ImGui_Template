@@ -4,6 +4,10 @@ module;
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_glfw.h"
 
+#include "Fonts/Roboto_Regular.h"
+#include "Fonts/Roboto_Bold.h"
+#include "Fonts/Roboto_Italic.h"
+
 export module ImguiContext;
 
 export struct ui_context
@@ -18,6 +22,13 @@ export struct ui_context
 
         // Setup Dear ImGui style
         ImGui::StyleColorsDark();
+
+        // Load default font
+        ImFontConfig fontConfig;
+        fontConfig.FontDataOwnedByAtlas = false;
+        io.Fonts->AddFontFromMemoryCompressedTTF(g_RobotoBold, g_RobotoBold_size, 18.0f, &fontConfig);
+        io.Fonts->AddFontFromMemoryCompressedTTF(g_RobotoItalic, g_RobotoItalic_size, 18.0f, &fontConfig);
+        io.FontDefault = io.Fonts->AddFontFromMemoryCompressedTTF(g_RobotoRegular, g_RobotoRegular_size, 18.0f, &fontConfig);
 
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 400 core");

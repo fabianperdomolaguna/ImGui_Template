@@ -16,8 +16,8 @@ export struct gl_window
     bool m_running = true;
 
     std::string title = "Segy - C++20";
-    int m_width = 1200;
-    int m_height = 650;
+    int32_t m_width = 1200;
+    int32_t m_height = 650;
 
     std::unique_ptr<opengl_framebuffer> m_framebuffer;
 
@@ -58,7 +58,7 @@ export struct gl_window
 
         glEnable(GL_DEPTH_TEST);
 
-        m_framebuffer = std::make_unique<opengl_framebuffer>();
+        m_framebuffer = std::make_unique<opengl_framebuffer>(m_width, m_height);
     }
 
     ~gl_window()

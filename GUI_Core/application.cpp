@@ -12,10 +12,9 @@ int main(int argc, char** argv)
 {
     auto window_app = std::make_unique<gl_window>();
     auto imgui_context = std::make_unique<ui_context>(window_app->m_window);
-    auto vertex_draw = std::make_unique<opengl_vertex>(window_app->m_running);
+    auto vertex_draw = std::make_unique<opengl_vertex>("Shaders_Files/vs.shader", "Shaders_Files/fs.shader");
 
     vertex_draw->create_buffers();
-    window_app->m_framebuffer->create_buffers(window_app->m_width, window_app->m_height);
 
     float m_sizex;
     float m_sizey;
