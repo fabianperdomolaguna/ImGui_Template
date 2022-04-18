@@ -8,8 +8,6 @@ module;
 
 export module Window;
 
-import OpenGLFramebuffers;
-
 export struct gl_window
 {
     GLFWwindow* m_window;
@@ -19,7 +17,7 @@ export struct gl_window
     int32_t m_width = 1200;
     int32_t m_height = 650;
 
-    std::unique_ptr<opengl_framebuffer> m_framebuffer;
+    static gl_window* w_instance;
 
     gl_window()
     {
@@ -53,12 +51,9 @@ export struct gl_window
             gl_window& window_app = *(gl_window*)glfwGetWindowUserPointer(window);
             window_app.m_width = width;
             window_app.m_height = height;
-            window_app.m_framebuffer->create_buffers(width, height);
         });
 
         glEnable(GL_DEPTH_TEST);
-
-        m_framebuffer = std::make_unique<opengl_framebuffer>(m_width, m_height);
     }
 
     ~gl_window()
