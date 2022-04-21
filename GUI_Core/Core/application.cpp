@@ -60,5 +60,12 @@ export struct application
 		m_layerstack.emplace_back(std::make_shared<T>())->on_attach();
 	}
 
+	template<typename T>
+	void push_layer_window()
+	{
+		static_assert(std::is_base_of<layer, T>::value, "Pushed type is not subclass of Layer!");
+		m_layerstack.emplace_back(std::make_shared<T>(window_app))->on_attach();
+	}
+
 	void set_menubar_callback(const std::function<void()>& menubar_callback) { m_menubar_callback = menubar_callback; }
 };

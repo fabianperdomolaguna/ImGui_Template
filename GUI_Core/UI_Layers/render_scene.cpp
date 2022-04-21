@@ -16,10 +16,10 @@ export struct simple_render : public layer
     std::unique_ptr<opengl_vertex> vertex_draw;
     std::unique_ptr<opengl_framebuffer> m_framebuffer;
 
-    simple_render()
+    simple_render(std::unique_ptr<gl_window> &window)
     {
         vertex_draw = std::make_unique<opengl_vertex>("Shaders_Files/vs.shader", "Shaders_Files/fs.shader");
-        m_framebuffer = std::make_unique<opengl_framebuffer>(1200, 650);
+        m_framebuffer = std::make_unique<opengl_framebuffer>(window->m_width, window->m_height);
         vertex_draw->create_buffers();
     }
 

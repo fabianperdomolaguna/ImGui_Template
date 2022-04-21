@@ -17,8 +17,6 @@ export struct gl_window
     int32_t m_width = 1200;
     int32_t m_height = 650;
 
-    static gl_window* w_instance;
-
     gl_window()
     {
         if (!glfwInit())
