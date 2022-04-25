@@ -10,11 +10,8 @@
     <Filter Include="Render">
       <UniqueIdentifier>{5eb76d6e-e4d3-4fc0-9f3f-73f421eef226}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders_Files">
-      <UniqueIdentifier>{9ff4dcab-88bd-481d-aea7-a333d7496ac6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI_Layers">
-      <UniqueIdentifier>{48d35dbf-d4e2-4fcb-8210-3e707404b9cb}</UniqueIdentifier>
+    <Filter Include="Image_Load">
+      <UniqueIdentifier>{2bd73885-df75-4130-aa48-f8be5a60c4a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,7 +21,6 @@
     <ClCompile Include="Core\window.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Shader\shader_utils.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
@@ -37,21 +33,11 @@
     <ClCompile Include="Core\application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="UI_Layers\render_scene.cpp">
-      <Filter>UI_Layers</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Shaders_Files\fs.shader">
-      <Filter>Shaders_Files</Filter>
-    </None>
-    <None Include="Shaders_Files\vs.shader">
-      <Filter>Shaders_Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Core\layer.h">
+    <ClCompile Include="Core\layer.cpp">
       <Filter>Core</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="Image_Load\image.cpp">
+      <Filter>Image_Load</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

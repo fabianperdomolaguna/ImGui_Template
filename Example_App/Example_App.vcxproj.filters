@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="UI_Layers\render_scene.cpp">
+      <Filter>UI_Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Layers\main_menu_bar.cpp">
+      <Filter>UI_Layers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders_Files">
+      <UniqueIdentifier>{2c76001f-b65d-46c0-ae8a-e83eaf45d27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI_Layers">
+      <UniqueIdentifier>{390f2bbc-3da2-4f06-b429-a15c412ffb21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders_Files\fs.shader">
+      <Filter>Shaders_Files</Filter>
+    </None>
+    <None Include="Shaders_Files\vs.shader">
+      <Filter>Shaders_Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

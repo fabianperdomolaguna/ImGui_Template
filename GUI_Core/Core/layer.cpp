@@ -1,6 +1,8 @@
-#pragma once
+module;
 
-struct layer
+export module Layer;
+
+export struct layer
 {
 	virtual ~layer() = default;
 

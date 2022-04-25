@@ -13,19 +13,23 @@ export struct gl_window
     GLFWwindow* m_window;
     bool m_running = true;
 
-    std::string title = "Segy - C++20";
-    int32_t m_width = 1200;
-    int32_t m_height = 650;
+    std::string title;
+    int32_t m_width;
+    int32_t m_height;
 
-    gl_window()
+    gl_window(std::string& window_title, int32_t& width, int32_t& height)
     {
+        title = window_title;
+        m_width = width;
+        m_height = height;
+
         if (!glfwInit())
         {
             std::cout << "Could not intialize GLFW!\n";
             m_running = false;
         }
 
-        m_window = glfwCreateWindow(m_width, m_height, title.c_str(), nullptr, nullptr);
+        m_window = glfwCreateWindow(m_width, m_height, window_title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_window);
 
         if (!m_window)

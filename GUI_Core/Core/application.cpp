@@ -4,13 +4,13 @@ module;
 #include <vector>
 #include <functional>
 
-#include "layer.h"
 #include "imgui.h"
 
 export module Application;
 
 import Window;
 import ImguiContext;
+import Layer;
 
 export struct application
 {
@@ -21,9 +21,9 @@ export struct application
 
 	std::function<void()> m_menubar_callback;
 
-	application()
+	application(std::string window_title, int32_t width, int32_t height)
 	{
-		window_app = std::make_unique<gl_window>();
+		window_app = std::make_unique<gl_window>(window_title, width, height);
 		imgui_context = std::make_unique<ui_context>(window_app->m_window);
 	}
 
