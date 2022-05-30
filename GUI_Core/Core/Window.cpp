@@ -5,6 +5,7 @@ module;
 #include <windows.h>
 
 #include "GLFW/glfw3.h"
+#include "imgui.h"
 
 export module Window;
 

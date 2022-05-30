@@ -41,7 +41,7 @@ export struct application
 				if (ImGui::BeginMainMenuBar())
 				{
 					m_menubar_callback();
-					ImGui::EndMenuBar();
+					ImGui::EndMainMenuBar();
 				}
 			}
 
