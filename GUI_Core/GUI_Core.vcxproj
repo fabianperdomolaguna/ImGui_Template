@@ -247,7 +247,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\;$(SolutionDir)Dependencies\json_nlohmann\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -265,7 +265,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\;$(SolutionDir)Dependencies\json_nlohmann\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -285,7 +285,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLAD\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\ImGUI\Include;$(SolutionDir)Dependencies\stb_image\;$(SolutionDir)Dependencies\json_nlohmann\</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>Full</Optimization>
     </ClCompile>
