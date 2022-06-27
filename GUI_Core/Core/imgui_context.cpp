@@ -8,13 +8,14 @@ module;
 #include "GLFW/glfw3.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_glfw.h"
-#include "nlohmann/json.hpp"
 
 #include "Fonts/Roboto_Regular.h"
 #include "Fonts/Roboto_Bold.h"
 #include "Fonts/Roboto_Italic.h"
 
 export module ImguiContext;
+
+import ConfigUtilities;
 
 void set_dark_theme_colors()
 {
@@ -196,7 +197,7 @@ void set_light_theme_colors()
     style.WindowPadding = ImVec2(2, 2);
 }
  
-std::unordered_map <std::string, std::any> app_styles{ {"dark", set_dark_theme_colors}, {"light", set_light_theme_colors} };
+std::unordered_map <std::string, std::any> app_styles{ {"Dark", set_dark_theme_colors}, {"Light", set_light_theme_colors} };
 
 export struct ui_context
 {
@@ -223,12 +224,9 @@ export struct ui_context
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
-        std::fstream json_config_file;
-        json_config_file.open("ConfigFile.json", std::ios::in);
-        nlohmann::json json_data = nlohmann::json::parse(json_config_file);
-        json_config_file.close();
-
-        std::any_cast <void (*) ()> (app_styles[json_data["GuiStyle"].get<std::string>()]) ();
+        // Read Config file - Establish color theme style
+        std::string current_style = get_config_variable("GuiStyle");
+        std::any_cast <void (*) ()> (app_styles[current_style]) ();
 
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 400 core");

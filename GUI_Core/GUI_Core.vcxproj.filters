@@ -13,6 +13,9 @@
     <Filter Include="Image_Load">
       <UniqueIdentifier>{2bd73885-df75-4130-aa48-f8be5a60c4a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{1ffe6718-068d-4dde-9131-1bd3156a6fc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\imgui_context.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="Image_Load\image.cpp">
       <Filter>Image_Load</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\config_utilities.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

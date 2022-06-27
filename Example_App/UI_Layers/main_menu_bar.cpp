@@ -2,18 +2,20 @@ module;
 
 #include <fstream>
 #include <string>
+#include <unordered_map>
 
 #include "imgui.h"
-#include "nlohmann/json.hpp"
 
 export module MainMenu;
 
 import Application;
+import ConfigUtilities;
 
 struct menu_variables
 {
 	bool exit_item = false;
 	bool theme_item = false;
+	std::unordered_map<std::string, bool> styles = { {"Dark", false}, {"Light", false} };
 };
 
 void exit_popup(bool &exit_item, application *app)
@@ -59,26 +61,12 @@ void change_style_popup(bool &theme_item, application* app)
 
 		ImGui::EndPopup();
 	}
-
-}
-
-void change_app_style(std::string app_style)
-{
-	std::fstream json_config_file;
-	json_config_file.open("ConfigFile.json", std::ios::in);
-	nlohmann::json json_data = nlohmann::json::parse(json_config_file);
-	json_config_file.close();
-
-	json_data["GuiStyle"] = app_style;
-
-	json_config_file.open("ConfigFile.json", std::ios::out);
-	json_config_file << json_data;
-	json_config_file.close();
 }
 
 export void menu_example(application* app)
 {
 	menu_variables m_variables;
+	m_variables.styles.at(get_config_variable("GuiStyle")) = true;
 
 	if (ImGui::BeginMenu("File"))
 	{
@@ -87,18 +75,14 @@ export void menu_example(application* app)
 
 		if (ImGui::BeginMenu("Color Theme"))
 		{
-			if (ImGui::MenuItem("Dark", ""))
+			for (auto app_style : m_variables.styles)
 			{
-				change_app_style("dark");
-				m_variables.theme_item = true;
+				if (ImGui::MenuItem(app_style.first.c_str(), "", app_style.second))
+				{
+					change_config_variable(app_style.first);
+					m_variables.theme_item = true;
+				}
 			}
-
-			if (ImGui::MenuItem("Light", ""))
-			{
-				change_app_style("light");
-				m_variables.theme_item = true;
-			}
-
 			ImGui::EndMenu();
 		}
 
