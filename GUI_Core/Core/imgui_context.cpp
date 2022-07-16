@@ -262,11 +262,10 @@ export struct ui_context
         ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
         ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+
         ImGui::Begin("InvisibleWindow", nullptr, window_flags);
         ImGui::PopStyleVar(3);
-
         ImGuiID dockSpaceId = ImGui::GetID("InvisibleWindowDockSpace");
-
         ImGui::DockSpace(dockSpaceId, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_PassthruCentralNode);
         ImGui::End();
     }
@@ -286,5 +285,12 @@ export struct ui_context
             ImGui::RenderPlatformWindowsDefault();
             glfwMakeContextCurrent(backup_current_context);
         }
+    }
+
+    void update_theme()
+    {
+        // Read Config file - Establish color theme style
+        std::string current_style = get_config_variable("GuiStyle");
+        std::any_cast <void (*) ()> (app_styles[current_style]) ();
     }
 };

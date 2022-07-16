@@ -1,12 +1,11 @@
 module;
 
-#include <fstream>
 #include <string>
 #include <unordered_map>
 
 #include "imgui.h"
 
-export module MainMenu;
+export module FileMenu;
 
 import Application;
 import ConfigUtilities;
@@ -14,11 +13,10 @@ import ConfigUtilities;
 struct menu_variables
 {
 	bool exit_item = false;
-	bool theme_item = false;
 	std::unordered_map<std::string, bool> styles = { {"Dark", false}, {"Light", false} };
 };
 
-void exit_popup(bool &exit_item, application *app)
+void exit_popup(bool& exit_item, application* app)
 {
 	if (exit_item)
 		ImGui::OpenPopup("Close the application?");
@@ -37,33 +35,12 @@ void exit_popup(bool &exit_item, application *app)
 		ImGui::SameLine();
 		if (ImGui::Button("Cancel", ImVec2(120, 0)))
 			ImGui::CloseCurrentPopup();
-			
-		ImGui::EndPopup();
-	}
-}
-
-void change_style_popup(bool &theme_item, application* app)
-{
-	if (theme_item)
-		ImGui::OpenPopup("App color theme");
-
-	// Always center this window when appearing
-	ImVec2 center = ImGui::GetMainViewport()->GetCenter();
-	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-
-	if (ImGui::BeginPopupModal("App color theme", NULL, ImGuiWindowFlags_NoResize))
-	{
-		ImGui::Text("Close the app to aply theme changes.\n");
-		ImGui::Separator();
-
-		if (ImGui::Button("Ok", ImVec2(120, 0)))
-			ImGui::CloseCurrentPopup();
 
 		ImGui::EndPopup();
 	}
 }
 
-export void menu_example(application* app)
+export void file_menu(application* app)
 {
 	menu_variables m_variables;
 	m_variables.styles.at(get_config_variable("GuiStyle")) = true;
@@ -79,8 +56,8 @@ export void menu_example(application* app)
 			{
 				if (ImGui::MenuItem(app_style.first.c_str(), "", app_style.second))
 				{
-					change_config_variable(app_style.first);
-					m_variables.theme_item = true;
+					change_config_variable("GuiStyle", app_style.first);
+					app->imgui_context->update_theme();
 				}
 			}
 			ImGui::EndMenu();
@@ -90,5 +67,4 @@ export void menu_example(application* app)
 	}
 
 	exit_popup(m_variables.exit_item, app);
-	change_style_popup(m_variables.theme_item, app);
-};
+}

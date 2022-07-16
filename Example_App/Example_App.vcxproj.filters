@@ -5,8 +5,11 @@
     <ClCompile Include="UI_Layers\render_scene.cpp">
       <Filter>UI_Layers</Filter>
     </ClCompile>
-    <ClCompile Include="UI_Layers\main_menu_bar.cpp">
-      <Filter>UI_Layers</Filter>
+    <ClCompile Include="MainMenu_Bar\main_menu_bar.cpp">
+      <Filter>MainMenu_Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu_Bar\file_menu.cpp">
+      <Filter>MainMenu_Bar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -15,6 +18,9 @@
     </Filter>
     <Filter Include="UI_Layers">
       <UniqueIdentifier>{390f2bbc-3da2-4f06-b429-a15c412ffb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainMenu_Bar">
+      <UniqueIdentifier>{6f520dab-3da4-41c8-9055-6ac64af12c92}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
